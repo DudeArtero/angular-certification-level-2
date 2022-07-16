@@ -1,0 +1,19 @@
+:host {
+    display: block;
+    padding: 16px 24px;
+
+    .stock-controls {
+        input {
+            margin-right: 16px;
+        }
+
+        margin-top: 8px;
+    }
+
+    .alert {
+        margin-top: 8px;
+        span {
+            color: red;
+        }
+    }
+}
