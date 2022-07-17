@@ -19,6 +19,10 @@ export class FinnhubService {
         this.#FINNHUB_CLIENT = new finnhub.DefaultApi();
     }
 
+    /**
+     * Gets all the stocks which match with the filter and emits the searchSymbol$ subject to notify the update on the list.
+     * @param filter String to filter and get the stocks
+     */
     searchSymbol(filter: string): void {
         this.#FINNHUB_CLIENT.symbolSearch(filter, (error: any, data: any, response: any) => {
             const stocks: Stock[] = data.result as Stock[];
@@ -26,7 +30,26 @@ export class FinnhubService {
         });
     }
 
+    /**
+     * Gets all the information about a symbol stock and calls a custom callback.
+     * @param symbol Symbol stock
+     * @param callback Custom callback
+     */
     quote(symbol: string, callback: (error: any, data: any, response: any) => void): void {
         this.#FINNHUB_CLIENT.quote(symbol, callback);
+    }
+
+    /**
+     * Gets all the sentiment information about a symbol stock and calls a custom callback.
+     * @param symbol Symbol stock
+     * @param from Date limit to start searching
+     * @param to Date limit to end searching
+     * @param callback Custom callback
+     */
+    insiderSentiment(symbol: string, from: Date, to: Date, callback: (error: any, data: any, response: any) => void): void {
+        const fromValue: string = from.toISOString().split('T')[0];
+        const toValue: string = to.toISOString().split('T')[0];
+
+        this.#FINNHUB_CLIENT.insiderSentiment(symbol, fromValue, toValue, callback);
     }
 }

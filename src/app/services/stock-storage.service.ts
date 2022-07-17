@@ -18,7 +18,7 @@ export class StockStorageService {
      * Adds a new stock to the current stock list stored in localStorage, only if the stock isn't in the list.
      * @param stock Stock symbol
      */
-    addStock(newStock: Stock) {
+    addStock(newStock: Stock): void {
         let stocks: Stock[] = this.#getStocks();
 
         if (!stocks.some(stock => stock.symbol === newStock.symbol)) {
@@ -27,6 +27,15 @@ export class StockStorageService {
     
             this.#stocks$.next(stocks);
         }
+    }
+
+    /**
+     * Returns the stock which has the provided symbol.
+     * @param symbol Symbol of the stock
+     * @returns Stock | undefined
+     */
+    getStock(symbol: string): Stock | undefined {
+        return this.#getStocks().find(stock => stock.symbol === symbol);
     }
 
     /**

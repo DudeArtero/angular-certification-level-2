@@ -15,3 +15,11 @@ export interface StockData {
     openPriceDay: number;
     previousClosePrice: number;
 }
+
+export interface StockSentiment {
+    month: number;
+    year: number;
+    change: number;
+    mspr: number
+    symbol: string;
+}
