@@ -18,19 +18,40 @@
             gap: 32px;
 
             .monthly-data {
-                .month-name {
-                    font-weight: bold;
-                }
-
-                .month-data {
-                    display: flex;
-                    justify-content: space-between;
-                }
-
                 flex: 1;
                 display: flex;
-                flex-direction: column;
-                gap: 4px;
+
+                .month-container {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 4px;
+                    flex: 1;
+
+                    .month-name {
+                        font-weight: bold;
+                    }
+    
+                    .month-data {
+                        display: flex;
+                        justify-content: space-between;
+                    }
+                }
+
+                .current-trend-arrow {
+                    float: right;
+                    display: flex;
+                    width: 20%;
+                    justify-content: center;
+                    align-items: center;
+                    font-size: 40px;
+            
+                    span.green {
+                        color: green;
+                    }
+                    span.red {
+                        color: red;
+                    }
+                }
             }
         }
     }
